@@ -23,8 +23,8 @@ void ofxGamepadCamera::update(ofEventArgs& e) {
 	float curTime = ofGetElapsedTimef();
 
 	float mult = curTime - lastTime;
-	pan(-pad->getAxisValue(PS3_STICK_R_X)*speedRotation*mult);
-	tilt(-pad->getAxisValue(PS3_STICK_R_Y)*speedRotation*mult);
+    panDeg(-pad->getAxisValue(PS3_STICK_R_X)*speedRotation*mult);
+    tiltDeg(-pad->getAxisValue(PS3_STICK_R_Y)*speedRotation*mult);
 
 	truck(pad->getAxisValue(PS3_STICK_L_X)*speedMove*mult);
 	boom(-pad->getAxisValue(PS3_STICK_L_Y)*speedMove*mult);
@@ -42,10 +42,10 @@ void ofxGamepadCamera::update(ofEventArgs& e) {
 	}
 
 	if(pad->getButtonValue(PS3_BTN_L1)) {
-		roll(-speedRotation*.7*mult);
+        rollDeg(-speedRotation*.7*mult);
 	}
 	if(pad->getButtonValue(PS3_BTN_R1)) {
-		roll(speedRotation*.7*mult);
+        rollDeg(speedRotation*.7*mult);
 	}
 
 	if(pad->getButtonValue(PS3_BTN_SELECT))

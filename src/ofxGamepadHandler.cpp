@@ -26,6 +26,7 @@ ofxGamepadHandler::ofxGamepadHandler():hasHotplug(false),hotplugNext(0) {
 }
 
 ofxGamepadHandler::~ofxGamepadHandler() {
+    waitForThread();
 }
 
 ofxGamepadHandler* ofxGamepadHandler::get() {
@@ -39,14 +40,14 @@ ofxGamepadHandler* ofxGamepadHandler::get() {
 void ofxGamepadHandler::enableHotplug(int interval) {
 	hasHotplug=true;
 	hotplugInterval=interval;
-	startThread(true, false);
+    startThread();
 }
 
 void ofxGamepadHandler::threadedFunction() {
 	while(isThreadRunning()) {
 
 		updatePadList();
-		lock();
+        tryLock();
 
 #ifdef USE_OIS
 		gamepads = gamepadsNew;
@@ -103,7 +104,7 @@ void ofxGamepadHandler::updatePadList() {
 			++sIt;
 		}
 
-		lock();
+        tryLock();
 		if(oisInputManager != NULL) {
 			oisInputManager->destroyInputSystem(oisInputManager);
 		}
@@ -139,7 +140,7 @@ void ofxGamepadHandler::update(ofEventArgs &args) {
 }
 
 void ofxGamepadHandler::update() {
-	lock();
+    tryLock();
 	gamepadList::iterator it=gamepads.begin();
 	while(it!=gamepads.end()) {
 		(*it)->update();

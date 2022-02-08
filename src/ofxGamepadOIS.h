@@ -7,9 +7,9 @@
  *
  */
 
-#ifndef _CLASS_ofxGamepadOIS_
-#define _CLASS_ofxGamepadOIS_
+#pragma once
 
+#ifdef USE_OIS
 #include "OIS.h"
 #include "ofxGamepad.h"
 

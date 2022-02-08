@@ -26,7 +26,7 @@
 
 #define N_EFFECTS 6
 
-static char* effect_names[] = {
+static string effect_names[] = {
 	"Sine vibration",
 	"Constant Force",
 	"Spring Condition",

@@ -3,6 +3,8 @@ example/bin/libs
 example/example.tags
 example/emptyExample.workspace.session
 example/obj/
+example/bin/example_debug
+example/example.qbs.user
 .DS_Store
 *.pbxuser
 *.mode1v3

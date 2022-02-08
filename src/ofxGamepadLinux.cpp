@@ -99,7 +99,7 @@ void ofxGamepadLinux::setupFF() {
 	if (test_bit(FF_FRICTION, features)) 	ofLog(OF_LOG_VERBOSE,"Friction ");
 	if (test_bit(FF_RUMBLE, features)) 		ofLog(OF_LOG_VERBOSE,"Rumble ");
 
-	ofLog(OF_LOG_VERBOSE, "\nNumber of simultaneous effects: "+n_effects );
+    ofLog(OF_LOG_VERBOSE, "\nNumber of simultaneous effects: "+ofToString(n_effects) );
 
 	if (ioctl(fdEvent, EVIOCGEFFECTS, &n_effects) == -1) {
 		ofLog(OF_LOG_ERROR,"Ioctl number of effects");
@@ -217,7 +217,7 @@ void ofxGamepadLinux::playFF(int i) {
 		if (write(fdEvent, (const void*) &play, sizeof(play)) == -1) {
 			ofLog(OF_LOG_ERROR,"Play effect");
 		}
-		ofLog(OF_LOG_VERBOSE,"Now Playing: "+string(effect_names[i])+"\n");
+        ofLog(OF_LOG_VERBOSE,"Now Playing: "+effect_names[i]+"\n");
 	} else {
 		ofLog(OF_LOG_ERROR,"There is no such effect");
 	}

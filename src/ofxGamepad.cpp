@@ -100,7 +100,7 @@ void ofxGamepad::draw(int x, int y)
 	ofTranslate(x, y);
 	ofSetColor(255);
 	ofPushMatrix();
-	ofRotate(90);
+    ofRotateDeg(90);
 	ofDrawBitmapString(name+" ("+ofToString(id)+")", 0, 0);
 	ofPopMatrix();
 	curX=17;
@@ -109,10 +109,10 @@ void ofxGamepad::draw(int x, int y)
 	ofRectangle axisSize(curX,0,85, 17);
 	for(int i=0; i<getNumAxis(); i++) {
 		ofSetColor(70);
-		ofRect(axisSize);
+        ofDrawRectangle(axisSize);
 		ofSetColor(255);
 		float x =  ofMap(getAxisValue(i), -1, 1, axisSize.x, axisSize.width+axisSize.x);
-		ofLine(x, axisSize.y, x, axisSize.y+axisSize.height);
+        ofDrawLine(x, axisSize.y, x, axisSize.y+axisSize.height);
 		ofSetColor(20);
 		ofDrawBitmapString(ofToString(i), axisSize.x, axisSize.y+axisSize.height-1);
 		axisSize.y+=axisSize.height+margin;
@@ -127,7 +127,7 @@ void ofxGamepad::draw(int x, int y)
 			ofSetColor(255);
 		else
 			ofSetColor(70);
-		ofRect(btnSize);
+        ofDrawRectangle(btnSize);
 		btnSize.y+=btnSize.height+margin;
 		ofSetColor(20);
 		ofDrawBitmapString(ofToString(i), btnSize.x, btnSize.y-4);

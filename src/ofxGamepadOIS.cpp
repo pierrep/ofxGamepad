@@ -9,6 +9,8 @@
 
 #include "ofxGamepadOIS.h"
 
+#ifdef USE_OIS
+
 using namespace OIS;
 
 ofxGamepadOIS::ofxGamepadOIS(InputManager* inputManager):ofxGamepad(){
@@ -102,3 +104,5 @@ void ofxGamepadOIS::rumble(float level)
 		forceFeedback->setMasterGain(level);
 	}
 }
+
+#endif

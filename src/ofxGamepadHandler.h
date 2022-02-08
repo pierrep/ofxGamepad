@@ -18,7 +18,7 @@
 typedef std::vector< ofPtr<ofxGamepadOIS> > gamepadList;
 #else
 typedef std::vector< ofPtr<ofxGamepad> > gamepadList;
-#endif;
+#endif
 
 
 class ofxGamepadHandler: public ofThread {
